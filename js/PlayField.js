@@ -28,7 +28,7 @@ class PlayField{
                 if (target.tagName == 'TD'){
                     if (playFiled.cellIsEmpty(target)){
                         playFiled.drawMark(target);
-                        if (playFiled.containsWinningLine())
+                        if (playFiled.containsWinningLine(parseInt(target.dataset.number)))
                             playFiled.game.gameOver(playFiled.manager.currentPlayer.number);
                         else if (playFiled.isFilled())
                             playFiled.game.gameOver(0);
@@ -53,17 +53,59 @@ class PlayField{
         }
         return true;
     }
-    containsWinningLine(){
+    containsWinningLine(cellNumber){
         const m = this.marks;
-        if ((m[0] != 0) && (m[0] == m[1]) && (m[0] == m[2])||
-            (m[0] != 0) && (m[0] == m[4]) && (m[0] == m[8])||
-            (m[0] != 0) && (m[0] == m[3]) && (m[0] == m[6])||
-            (m[1] != 0) && (m[1] == m[4]) && (m[1] == m[7])||
-            (m[2] != 0) && (m[2] == m[5]) && (m[2] == m[8])||
-            (m[2] != 0) && (m[2] == m[4]) && (m[2] == m[6])||
-            (m[3] != 0) && (m[3] == m[4]) && (m[3] == m[5])||
-            (m[6] != 0) && (m[6] == m[7]) && (m[6] == m[8])){
-            return true;
+        switch (cellNumber){
+            case 0:
+                if ((m[0] != 0) && (m[0] == m[1] && m[0] == m[2]||
+                                    m[0] == m[4] && m[0] == m[8]||
+                                    m[0] == m[3] && m[0] == m[6]))
+                    return true;
+                break;
+            case 1:
+                if ((m[1] != 0) && (m[1] == m[0] && m[1] == m[2]||
+                                    m[1] == m[4] && m[1] == m[7]))
+                    return true;
+                break;
+            case 2:
+                if ((m[2] != 0) && (m[2] == m[1] && m[2] == m[0]||
+                                    m[2] == m[5] && m[2] == m[8]||
+                                    m[2] == m[4] && m[2] == m[6]))
+                    return true;
+                break;
+            case 3:
+                if ((m[3] != 0) && (m[3] == m[0] && m[3] == m[6]||
+                                    m[3] == m[4] && m[3] == m[5]))
+                    return true;
+                break;
+            case 4:
+                if ((m[4] != 0) && (m[4] == m[0] && m[4] == m[8]||
+                                    m[4] == m[2] && m[4] == m[6]||
+                                    m[4] == m[1] && m[4] == m[7]||
+                                    m[4] == m[3] && m[4] == m[5]))
+                    return true;
+                break;
+            case 5:
+                if ((m[5] != 0) && (m[5] == m[2] && m[5] == m[8]||
+                                    m[5] == m[3] && m[5] == m[4]))
+                    return true;
+                break;
+            case 6:
+                if ((m[6] != 0) && (m[6] == m[0] && m[6] == m[3]||
+                                    m[6] == m[7] && m[6] == m[8]||
+                                    m[6] == m[4] && m[6] == m[2]))
+                    return true;
+                break;
+            case 7:
+                if ((m[7] != 0) && (m[7] == m[1] && m[7] == m[4]||
+                                    m[7] == m[6] && m[7] == m[8]))
+                    return true;
+                break;
+            case 8:
+                if ((m[8] != 0) && (m[8] == m[0] && m[8] == m[4]||
+                                    m[8] == m[6] && m[8] == m[7]||
+                                    m[8] == m[2] && m[8] == m[5]))
+                    return true;
         }
         return false;
     }
