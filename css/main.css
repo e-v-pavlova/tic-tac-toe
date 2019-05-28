@@ -1,7 +1,31 @@
-table {
-    border-spacing: 0;
-    margin: 100px;
-}
-table td{
+#play-field{
     border: 1px solid black;
+    border-spacing: 0;
+    margin: 100px 100px 50px 100px;
+}
+#play-field td{
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+#play-field img{
+    margin: auto;
+    display: inline;
+}
+#game-over-message,
+#continue-button{
+    width: 614px;
+    margin-left: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+#continue-button{
+    padding: 10px;
+    border: 0;
+    background-color: grey;
+    color: white;
+}
+#continue-button:hover{
+    background-color: green;
 }
