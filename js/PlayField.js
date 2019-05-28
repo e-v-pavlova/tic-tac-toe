@@ -6,6 +6,7 @@ class PlayField{
     }
     init(){
         const table = document.createElement('table');
+        table.id = "play-field";
         document.body.appendChild(table);
         for (let i = 0; i < 3; i++){
             let row = document.createElement('tr');
@@ -65,5 +66,17 @@ class PlayField{
             return true;
         }
         return false;
+    }
+    lockCells(){
+        for (let i = 0; i < this.marks.length; i++){
+            this.marks[i] = -1;
+        }
+    }
+    cleanCells(){
+        const cells = document.getElementById('play-field').querySelectorAll('td');
+        for (let i = 0; i < this.marks.length; i++){
+            this.marks[i] = 0;
+            cells[i].innerHTML = '';
+        }
     }
 }
